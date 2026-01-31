@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 1: Keyboard</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* global styles */
+        body { 
+            font-family: 'Roboto Mono', monospace;
+            text-align: center; 
+            margin: 0;
+            padding-top: 50px;
+            min-height: 100vh; /* Ensure full height */
+            transition: background-color 0.15s ease, color 0.15s ease;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
+
+        /* controls box (sound wave select + gradient) */
+        .controls { 
+            background: white; 
+            color: #333 !important; /* FORCING text to be dark so it is readable */
+            padding: 25px 40px; 
+            border-radius: 12px;
+            box-shadow: 0 5px 13px rgba(0,0,0,0.2); /* soft shadow for pop */
+            display: inline-block;
+            margin-bottom: 40px;
+        }
+
+        .control-group {
+            display: inline-block;
+            margin: 0 15px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: #777;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+        }
+
+        select, input[type="color"] {
+            padding: 5px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            height: 35px;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+
+        /* KEYBOARD VISUAL GUIDE */
+        .keyboard-guide {
+            display: inline-block;
+            text-align: left;
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 8px;
+        }
+
+        /* Style for individual keys */
+        .key {
+            width: 40px;
+            height: 40px;
+            margin: 0 4px;
+            background: rgba(255, 255, 255, 0.3); /* semi-transparent so it kinda changes with the background */
+            border: 1px solid currentColor; /* border matches text color (black or white) */
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+            box-shadow: 0 2px 0 currentColor; /* "3D" press effect */
+        }
+        
+        /* offset the second row slightly to look like a real keyboard */
+        .row-2 {
+            margin-left: 20px; 
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Colorful Keyboard</h1>
+    
+    <div class="controls">
+        <div class="control-group">
+            <label for="waveform">Sound Wave</label>
+            <select id="waveform">
+                <option value="sine">Sine</option>
+                <option value="sawtooth">Sawtooth</option>
+                <option value="square">Square</option>
+                <option value="triangle">Triangle</option>
+            </select>
+        </div>
+
+        <div class="control-group" style="border-left: 1px solid #eee; padding-left: 30px;">
+            <label>Gradient Colors</label>
+            <span style="display: flex; align-items: center; gap: 10px;">
+                <span>Low: <input type="color" id="startColor" value="#0000FF"></span>
+                <span>High: <input type="color" id="endColor" value="#FF0000"></span>
+            </span>
+        </div>
+    </div>
+
+    <div class="instructions">
+        <p style="opacity: 0.8; font-size: 0.9rem; margin-bottom: 20px;">Below shows which keys on your keyboard will play a sound. <br> There is not click functionality as of now; it merely serves as a guide for the user.</p>
+        
+        <div class="keyboard-guide">
+            <div class="row">
+                <div class="key">Q</div><div class="key">2</div><div class="key">W</div>
+                <div class="key">3</div><div class="key">E</div><div class="key">R</div>
+                <div class="key">5</div><div class="key">T</div><div class="key">6</div>
+                <div class="key">Y</div><div class="key">7</div><div class="key">U</div>
+            </div>
+            
+            <div class="row row-2">
+                <div class="key">Z</div><div class="key">S</div><div class="key">X</div>
+                <div class="key">D</div><div class="key">C</div><div class="key">V</div>
+                <div class="key">G</div><div class="key">B</div><div class="key">H</div>
+                <div class="key">N</div><div class="key">J</div><div class="key">M</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
